@@ -4,17 +4,16 @@ import ContactDetail from './ContactDetail'
 import { indexOf } from 'lodash';
 
 
-const ContactDetails = ({ results }) => {
+const ContactDetails = ({ results, deleteUsersOnContact }) => {
 
     return (
         <>
 
-        {/* {results.map(( result,  index ) => (
-                <ContactDetail key = {index} result={result} />))} */}
+        {results.map(( result ) => (
+                <ContactDetail key = {result.id} result={result} deleteUsersOnContact={deleteUsersOnContact} />))}
 
-        {/* <ContactDetail result={results} /> */}
+         {/* <ContactDetail result={results} />  */}
 
-        { results.gender }
         </>
     );
 }

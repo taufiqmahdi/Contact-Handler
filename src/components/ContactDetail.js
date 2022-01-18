@@ -2,16 +2,16 @@ import { Container, Text, Box, Button, Flex, useColorMode, Heading, Spacer, Avat
 import { DeleteIcon, MoonIcon, SunIcon, PlusSquareIcon, CopyIcon, CloseIcon } from '@chakra-ui/icons';
 
 
-const ContactDetail = ({ result }) => {
+const ContactDetail = ({ result, deleteUsersOnContact }) => {
 
     return (
         <Container maxW='100%'>
             <Flex h='250px' direction={'row'} w='100%'>
                 <Box p={5} align='center'>
-                    <Avatar size='2xl' name='Dan Abrahmov' src='https://randomuser.me/api/portraits/women/26.jpg' />
+                    <Avatar size='2xl' name='Dan Abrahmov' src={result.picture.large} />
                     <Box p={3}>
                         <Heading size='md'>
-                            Claudia Davis
+                            {result.name.first + ' ' + result.name.last}
                         </Heading>
                     </Box>
                 </Box>
@@ -22,25 +22,25 @@ const ContactDetail = ({ result }) => {
                             Tanggal Lahir
                         </Heading>
                         <Text>
-                            26 Januari 1952
+                            {result.dob.date}
                         </Text>
                         <Heading size={'sm'} mt={2}>
                             Jenis Kelamin
                         </Heading>
                         <Text>
-                            Perempuan
+                            {result.gender === 'female' ? 'Perempuan' : 'Laki-laki'}
                         </Text>
                         <Heading size={'sm'} mt={2}>
                             Alamat Surel
                         </Heading>
                         <Text>
-                            claudia.davis@example.com
+                            {result.email}
                         </Text>
                         <Heading size={'sm'} mt={2}>
                             Nomor Telepon
                         </Heading>
                         <Text>
-                            (318)-587-4856
+                            {result.phone}
                         </Text>
                     </Box>
                     <Box ml={2} w='50%'>
@@ -48,19 +48,27 @@ const ContactDetail = ({ result }) => {
                             Tempat Tinggal
                         </Heading>
                         <Text>
-                            2047 Spring St
+                            {result.location.street.name + ' ' + result.location.street.number}
+                            {<br />}
+                            {result.location.city}
+                            {<br />}
+                            {result.location.state}
+                            {<br />}
+                            {result.location.postcode}
+                            {<br />}
+                            {result.location.coordinates.latitude + ' , ' + result.location.coordinates.longitude}
                         </Text>
                     </Box>
                 </Flex>
             </Flex>
             <Box align='right'>
-                <Button variant={'ghost'} colorScheme='red' onClick={''} leftIcon={
+                <Button onClick={() => deleteUsersOnContact(result.id)} variant={'ghost'} colorScheme='red' /* onClick={''} */ leftIcon={
                     <DeleteIcon />
-                    } > 
+                } >
                     Hapus Kontak
                 </Button>
             </Box>
-            
+
         </Container>
     );
 }
