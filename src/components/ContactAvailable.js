@@ -1,9 +1,6 @@
-import { Input, InputGroup, InputRightElement, Container, Text, Box, Button, Flex, useColorMode, Heading, Spacer, Avatar, Link, HStack, Divider } from '@chakra-ui/react';
-import { SearchIcon, MoonIcon, SunIcon, PlusSquareIcon, CopyIcon, CloseIcon } from '@chakra-ui/icons';
+import { Box, Flex, Heading, Avatar, Link } from '@chakra-ui/react';
 
-
-const ContactAvailable = ({ onAdd, result, contactDetailID }) => {
-
+const ContactAvailable = ({ result, contactDetailID }) => {
     return (
         <Flex _hover={{ background: "gray.50", color: "teal.500" }} as='button' borderStyle={'solid'} w='100%' minH='60px' py={{ base: 2 }} px={{ base: 4 }} align={'center'} 
         onClick={() => contactDetailID(result.id)} >

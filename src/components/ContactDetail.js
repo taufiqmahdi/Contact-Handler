@@ -1,9 +1,7 @@
-import { Container, Text, Box, Button, Flex, useColorMode, Heading, Spacer, Avatar, Link, HStack, Divider } from '@chakra-ui/react';
-import { DeleteIcon, MoonIcon, SunIcon, PlusSquareIcon, CopyIcon, CloseIcon } from '@chakra-ui/icons';
-
+import { Container, Text, Box, Button, Flex, Heading, Avatar, Divider } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 const ContactDetail = ({ result, deleteUsersOnContact }) => {
-
     return (
         <Container maxW='100%'>
             <Flex h='250px' direction={'row'} w='100%'>
@@ -62,13 +60,12 @@ const ContactDetail = ({ result, deleteUsersOnContact }) => {
                 </Flex>
             </Flex>
             <Box align='right'>
-                <Button onClick={() => deleteUsersOnContact(result.id)} variant={'ghost'} colorScheme='red' /* onClick={''} */ leftIcon={
+                <Button onClick={() => deleteUsersOnContact(result.id)} variant={'ghost'} colorScheme='red' leftIcon={
                     <DeleteIcon />
                 } >
                     Hapus Kontak
                 </Button>
             </Box>
-
         </Container>
     );
 }
